@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        @page {
+            margin: 1in;
+            @top-center {
+                content: element(header);
+            }
+            @bottom-center {
+                content: element(footer);
+            }
+        }
+
+        header {
+            display: block;
+            position: running(header);
+            text-align: center;
+            font-size: 12pt;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            display: block;
+            position: running(footer);
+            text-align: center;
+            font-size: 12pt;
+            margin-top: 20px;
+        }
+
+        .content {
+            margin-top: 2in;
+            margin-bottom: 2in;
+        }
+
+        .page-number:before {
+            content: "Page " counter(page);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div th:text="${header}">Header Content</div>
+    </header>
+
+    <footer>
+        <div th:text="${footer}">Footer Content</div>
+        <div class="page-number"></div>
+    </footer>
+
+    <div class="content">
+        <h1 th:text="${message}">Default Message</h1>
+        <p th:each="i : ${#numbers.sequence(1, 100)}">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+        </p>
+    </div>
+</body>
+</html>
